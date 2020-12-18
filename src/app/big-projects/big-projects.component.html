@@ -1,0 +1,27 @@
+<h2>Projecten</h2>
+<h3>Besproken</h3>
+<div class="big-project-container">
+  <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="doneBigProjects" [cdkDropListConnectedTo]="[todoList]"
+    class="big-project-list" (cdkDropListDropped)="drop($event)">
+    <div class="big-project-box" *ngFor="let project of doneBigProjects; index as i" cdkDrag>
+      <div class="big-project-custom-placeholder" *cdkDragPlaceholder></div>
+      [{{i}}] {{project.name}}
+    </div>
+  </div>
+</div>
+
+<h3>Todo</h3>
+<div class="big-project-container">
+  <div
+    cdkDropList 
+    class="big-project-list"
+    #todoList="cdkDropList"
+    [cdkDropListData]="bigProjects"
+    [cdkDropListConnectedTo]="[doneList]"
+    (cdkDropListDropped)="drop($event)">
+    <div class="big-project-box" *ngFor="let project of bigProjects" cdkDrag>
+      <div class="big-project-custom-placeholder" *cdkDragPlaceholder></div>
+      {{project.name}}
+    </div>
+  </div>
+</div>
